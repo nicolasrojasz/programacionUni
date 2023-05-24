@@ -1,0 +1,37 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <div class="fadeIn first p-2">
+            <h3>Registrarse</h3>
+        </div>
+
+
+        <input type="text" id="login" class="fadeIn second" placeholder="Cedula" [(ngModel)]="cedula">
+        <input type="text" id="login" class="fadeIn second" placeholder="Nombre completo" [(ngModel)]="nombre">
+        <input type="text" id="login" class="fadeIn second" placeholder="Telefono" [(ngModel)]="telefono">
+        <input type="text" id="login" class="fadeIn second" placeholder="Correo" [(ngModel)]="correo">
+        <input type="text" id="login" class="fadeIn second" placeholder="Contraseña" [(ngModel)]="contrasena">
+
+        <label class="mt-2"> Selecciona Carril : </label>
+        <div class="mt-2 mb-4 div2">
+            <select class="form-select" style="width:90%;" [(ngModel)]="varCarrilSelect" (change)="capturarCarril()">
+                <option *ngFor="  let info of selectCarril" [value]="info.Idcarril">
+                    {{info.tipocarril}}
+                </option>
+            </select>
+        </div>
+
+        <!-- <input type="text" id="login" class="fadeIn second" placeholder="Ningun Carril" [(ngModel)]="carril"> -->
+        <input type="button" class="fadeIn fourth mt-2" value="Confirmar" (click)="registrar()">
+
+
+
+
+    </div>
+</div>
