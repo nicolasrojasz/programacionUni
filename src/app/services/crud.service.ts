@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 export class CrudService {
   constructor(private http: HttpClient) {}
 
-  login(usuario: string, contrasena: string): Observable<any> {
-    return this.http.get<any>('');
+  login(): Observable<any> {
+    return this.http.get<any>('http://localhost/backCrud-PHP-PR/login.php');
   }
 
   registrarPariente(

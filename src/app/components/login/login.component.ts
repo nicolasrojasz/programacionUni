@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
@@ -13,19 +14,22 @@ export class LoginComponent {
     usuario: '',
     contrasena: '',
   };
-  constructor(private services: CrudService) {}
+  constructor(private services: CrudService, private router: Router) {}
 
   iniciarSesion() {
     this.infoLogin = {
       usuario: this.usuario,
       contrasena: this.contrasena,
     };
-    this.services.login(this.usuario, this.contrasena).subscribe((response) => {
-      if (response === 1) {
+    this.services.login().subscribe((response) => {
+      let contrasena = response[0].Contrasena;
+      let usuario = response[0].Correo;
+      if (this.contrasena === contrasena && this.usuario === usuario) {
         localStorage.setItem('login', JSON.stringify(this.infoLogin));
         console.log('Se inicio sesion');
+        this.router.navigate(['bienvenido']);
       } else {
-        console.log(response);
+        console.log('Usuario incorrecto');
       }
     });
   }
