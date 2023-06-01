@@ -11,6 +11,18 @@ export class CrudService {
     return this.http.get<any>('http://localhost/backCrud-PHP-PR/login.php');
   }
 
+  registrarEstudiante(
+    idte: number,
+    nombre: string,
+    seccion: number,
+    estado: number,
+    idPariente: number
+  ): Observable<any> {
+    return this.http.get(
+      `http://localhost/backCrud-PHP-PR/guardarAlumno.php?Idte=${idte}&NombreAlum=${nombre}&Idseccion=${seccion}&estado=${estado}&Idpariente=${idPariente}`
+    );
+  }
+
   registrarPariente(
     cedula: string,
     nombre: string,
@@ -24,7 +36,31 @@ export class CrudService {
     );
   }
 
+  traerEstudiantes(): Observable<any> {
+    return this.http.get(`http://localhost/backCrud-PHP-PR/obtenerAlumnos.php`);
+  }
+  traerEstudiantesInicio(): Observable<any> {
+    return this.http.get(
+      `http://localhost/backCrud-PHP-PR/obtenerAlumnosInicio.php`
+    );
+  }
+
+  eliminarEstu(id: number): Observable<any> {
+    return this.http.get(
+      `http://localhost/backCrud-PHP-PR/eliminarEstudiante.php?Idte=${id}`
+    );
+  }
   traerCarril(): Observable<any> {
     return this.http.get(`http://localhost/backCrud-PHP-PR/traerCarril.php`);
+  }
+  actualizarCarril(CC: number, idCarril: number): Observable<any> {
+    return this.http.get(
+      `http://localhost/backCrud-PHP-PR/actualizarCarril.php?CC=${CC}&Idcarril=${idCarril}`
+    );
+  }
+  actualizarEstudiante(Idpariente: number, estado: number): Observable<any> {
+    return this.http.get(
+      `http://localhost/backCrud-PHP-PR/actualizarEstudiante.php?Idpariente=${Idpariente}&estado=${estado}`
+    );
   }
 }

@@ -10,6 +10,7 @@ import { RegistroAlumnoComponent } from './components/registro-alumno/registro-a
 import { InicioComponent } from './components/inicio/inicio.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
